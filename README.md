@@ -4,7 +4,7 @@
 
 Spaceship Demo is a AAA Playable First person demo showcasing effects made with Visual Effect Graph and rendered with High Definition Render Pipeline.
 
-**[DOWNLOAD LATEST RELEASE HERE](https://github.com/Unity-Technologies/SpaceshipDemo/releases/latest)**
+**[DOWNLOAD LATEST MACOS RELEASE HERE](https://github.com/mrmacright/SpaceshipDemo/releases/tag/MrMacRightBuilds)**
 
 For update information, see the [Changelog](https://github.com/Unity-Technologies/SpaceshipDemo/blob/master/CHANGELOG.md).
 
