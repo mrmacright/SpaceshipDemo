@@ -6,7 +6,7 @@ Spaceship, is a modern AAA tech demo, optimised for Intel and M1 hardware by Uni
 
 **[DOWNLOAD LATEST MACOS RELEASE HERE](https://github.com/mrmacright/SpaceshipDemo/releases/tag/MrMacRightBuilds)**
 
-The game is also available on Steam... but that build is very broken on Mac from the UI and gameplay interaction. Avoid it until it's fixed (https://store.steampowered.com/app/1605230/Spaceship__Visual_Effect_Graph_Demo/)**
+The game is also available on [Steam](https://store.steampowered.com/app/1605230/Spaceship__Visual_Effect_Graph_Demo/)... but that build is very broken on Mac from the UI and gameplay interaction. Avoid it until it's fixed! 
 
 ## Mac Requirements
 
