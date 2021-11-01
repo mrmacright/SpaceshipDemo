@@ -9,11 +9,11 @@ Spaceship Demo is a AAA Playable First person demo showcasing effects made with 
 ## Mac Requirements
 
 In order to run Spaceship demo project, make sure your Mac meets the following requirements:
-OS: 
-Processor: 
-Memory: 8 GB RAM
-Graphics:
-Storage: 1.14 GB
+* OS: 
+* Processor: 
+* Memory: 8 GB RAM
+* Graphics:
+* Storage: 1.14 GB
 
 Additional Notes: The game should be supported on the following Macs. To check your Mac model and when it was released, select About This Mac from the Apple menu on your menu bar.
 * All 13" MacBook Airs released since late 2020
