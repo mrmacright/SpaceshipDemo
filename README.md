@@ -15,7 +15,7 @@ In order to run Spaceship demo project, make sure your Mac meets the following r
 * Graphics: Apple M1/M1 Pro/M1 Max
 * Storage: 1.14 GB
 
-Additional Notes: The game should be supported on the following Macs. To check your Mac model and when it was released, select About This Mac from the Apple menu on your menu bar.
+The game should be supported on the following Macs:
 * All 13" MacBook Airs released since late 2020
 * All 13" MacBook Pros released since late 2020
 * All 14" MacBook Pros released since late 2021
