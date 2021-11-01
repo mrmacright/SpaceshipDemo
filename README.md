@@ -10,7 +10,7 @@ The game is also available on [Steam](https://store.steampowered.com/app/1605230
 
 ## Mac Requirements
 
-In order to run Spaceship demo project, make sure your Mac meets the following requirements:
+In order to run Spaceship, make sure your Mac meets the following requirements:
 * OS: macOS 11 
 * Processor: 
 * Memory: 8 GB RAM
