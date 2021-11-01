@@ -14,7 +14,7 @@ In order to run Spaceship, make sure your Mac meets the following requirements:
 * OS: macOS 11 
 * Processor: 
 * Memory: 8 GB RAM
-* Graphics: Apple M1/M1 Pro/M1 Max
+* Graphics: 4GB AMD Radeon R9 M295X or better, Apple M1/M1 Pro/M1 Max
 * Storage: 1.14 GB
 
 The game should be supported on the following Macs:
