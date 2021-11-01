@@ -6,28 +6,26 @@ Spaceship Demo is a AAA Playable First person demo showcasing effects made with 
 
 **[DOWNLOAD LATEST MACOS RELEASE HERE](https://github.com/mrmacright/SpaceshipDemo/releases/tag/MrMacRightBuilds)**
 
-For update information, see the [Changelog](https://github.com/Unity-Technologies/SpaceshipDemo/blob/master/CHANGELOG.md).
+## Mac Requirements
 
-## Requirements
+In order to run Spaceship demo project, make sure your Mac meets the following requirements:
+OS: 
+Processor: 
+Memory: 8 GB RAM
+Graphics:
+Storage: 1.14 GB
 
-In order to download and run the latest Spaceship demo project, make sure you have the following
-* [Github Desktop](https://desktop.github.com/) or [Git For Windows](https://git-scm.com/download/win) + [Git LFS](https://git-lfs.github.com/) (Required for Cloning the Repository) or any other git client.
-* Unity 2020.2.4f1 or newer (See each release notes in [changelog](https://github.com/Unity-Technologies/SpaceshipDemo/blob/master/CHANGELOG.md) for version requirements)
+Additional Notes: The game should be supported on the following Macs. To check your Mac model and when it was released, select About This Mac from the Apple menu on your menu bar.
+* All 13" MacBook Airs released since late 2020
+* All 13" MacBook Pros released since late 2020
+* All 14" MacBook Pros released since late 2021
+* All 15" MacBook Pros released since 2016
+* All 16" MacBook Pros released since 2019
+* All 21.5" iMacs released since 2017 with a 2GB or better graphics card
+* All 27" iMacs released since Late 2014
+* All 27" iMac Pros released since Late 2017
+* All Mac Pros released since Late 2013
 
-## How to Download/Install
+## How to Open
 
-### Method 1 : Clone the repository
-
-**Important Note**: This repository uses **Git-LFS** to store large files. In order to get the data correctly you need to [install Git-LFS](https://git-lfs.github.com/) before starting to clone the repository. **Do NOT use the Download ZIP button as it will not get the LFS files correctly**
-
-#### Using Github Desktop
-
-If you have [Github Desktop](https://desktop.github.com/) installed :  use the **Clone or Download** green button, then select **Open in Desktop**.
-
-#### Using Git Command Line (or another Git Client)
-
-You can clone this repository and start opening directly the project using the following command : `git clone https://github.com/Unity-Technologies/SpaceshipDemo.git`
-
-### Method 2 : Download in Releases page
-
-You can also download project archives in the [Releases](https://github.com/Unity-Technologies/SpaceshipDemo/releases) tab. These zip files contains the full project for a one-time download without Git. 
+To open, right click “SpaceshipVFXDemo” and click “Open”, Then click “Open” on the pop-up menu
