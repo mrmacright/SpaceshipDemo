@@ -2,7 +2,7 @@
 
 ![](https://blogs.unity3d.com/wp-content/uploads/2019/08/image10.png)
 
-Spaceship, is a modern AAA tech demo, optimised for Intel and M1 hardware by Unity & the Apple Metal Engineering Team. It's short narrative sequence showcases high-end visual effects using Unity High Definition Render Pipeline & VFX Graph. It's primarily intended as a learning resource for game devs.
+Spaceship, is a modern AAA tech demo, optimised for Intel and M1 hardware by Unity & the Apple Metal Engineering Team. It's short narrative sequence showcases high-end visual effects using Unity High Definition Render Pipeline & VFX Graph. It's primarily intended as a learning resource for game devs, but also tech enthusiasts! 
 
 **[DOWNLOAD LATEST MACOS RELEASE HERE](https://github.com/mrmacright/SpaceshipDemo/releases/tag/MrMacRightBuilds)**
 
@@ -30,5 +30,7 @@ The game should be supported on the following Macs:
 * All Mac Pros released since Late 2013
 
 ## How to Open
-
-To open, right click “SpaceshipVFXDemo” and click “Open”, Then click “Open” on the pop-up menu
+* Find DMG file in your downloads folder and open it
+* Drag “SpaceshipVFXDemo” to your Applications folder
+* Right click “SpaceshipVFXDemo” and click “Open”
+* Click “Open” on the pop-up menu to approve the application 
