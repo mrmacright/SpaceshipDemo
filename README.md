@@ -2,7 +2,7 @@
 
 ![](https://blogs.unity3d.com/wp-content/uploads/2019/08/image10.png)
 
-Spaceship Demo is a AAA Playable First person demo showcasing effects made with Visual Effect Graph and rendered with High Definition Render Pipeline.
+Spaceship, is a modern AAA tech demo, optimised for Intel and M1 hardware by Unity & the Apple Metal Engineering Team. It's short narrative sequence showcases high-end visual effects using Unity High Definition Render Pipeline & VFX Graph. It's primarily intended as a learning resource for game devs.
 
 **[DOWNLOAD LATEST MACOS RELEASE HERE](https://github.com/mrmacright/SpaceshipDemo/releases/tag/MrMacRightBuilds)**
 
