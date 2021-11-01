@@ -12,7 +12,7 @@ The game is also available on [Steam](https://store.steampowered.com/app/1605230
 
 In order to run Spaceship, make sure your Mac meets the following requirements:
 * OS: macOS 11 
-* Processor: 
+* Processor: 2GHz Intel Core i5 or better
 * Memory: 8 GB RAM
 * Graphics: 4GB AMD Radeon R9 M295X or better, Apple M1/M1 Pro/M1 Max
 * Storage: 1.14 GB
