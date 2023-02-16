@@ -14,7 +14,7 @@ In order to run Spaceship, make sure your Mac meets the following requirements:
 * OS: macOS 11 
 * Processor: 2.6 GHz Intel Core i5 or better
 * Memory: 8 GB RAM
-* Graphics: 4GB AMD Radeon R9 M295X or better, Apple M1/M1 Pro/M1 Max
+* Graphics: 4GB AMD Radeon R9 M295X or better, Any Apple M1/M2
 * Storage: 1.14 GB
 
 The game should be supported on the following Macs:
@@ -28,6 +28,7 @@ The game should be supported on the following Macs:
 * All 27" iMacs released since Late 2014 with a 4 GB or better graphics card
 * All 27" iMac Pros released since Late 2017
 * All Mac Pros released since Late 2013
+* All Mac Studios released since 2022
 
 ## How to Open
 * Find DMG file in your downloads folder and open it
