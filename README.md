@@ -17,7 +17,7 @@ In order to run Spaceship, make sure your Mac meets the following requirements:
 * Graphics: Apple M1/M2
 * Storage: 1.14 GB
 
-The game should be supported on the following Macs:
+The game is supported on the following Macs:
 * MacBook Airs released since late 2020
 * 13" MacBook Pros released since late 2020
 * 14" MacBook Pros released since late 2021
