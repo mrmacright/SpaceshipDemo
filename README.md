@@ -22,8 +22,8 @@ The game is supported on the following Macs:
 * 13" MacBook Pros released since late 2020
 * 14" MacBook Pros released since 2021
 * 16" MacBook Pros released since 2021
-* 24" iMac released since 2021
-* Mac mini's released since late 2020
+* 24" iMacs released since 2021
+* Mac minis released since late 2020
 * Mac Studios released since 2022
 
 ## How to Open
