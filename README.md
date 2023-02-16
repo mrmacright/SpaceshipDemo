@@ -18,17 +18,13 @@ In order to run Spaceship, make sure your Mac meets the following requirements:
 * Storage: 1.14 GB
 
 The game should be supported on the following Macs:
-* All MacBook Airs released since late 2020
-* All 13" MacBook Pros released since late 2020
-* All 14" MacBook Pros released since late 2021
-* All 15" MacBook Pros released since 2016 with a 4 GB or better graphics card
-* All 16" MacBook Pros released since 2019
-* All Mac mini's released since late 2020
-* All 21.5" iMacs released since 2017 with a 4 GB or better graphics card
-* All 27" iMacs released since Late 2014 with a 4 GB or better graphics card
-* All 27" iMac Pros released since Late 2017
-* All Mac Pros released since Late 2013
-* All Mac Studios released since 2022
+* MacBook Airs released since late 2020
+* 13" MacBook Pros released since late 2020
+* 14" MacBook Pros released since late 2021
+* 16" MacBook Pros released since 2021
+* 24" iMac released since 2021
+* Mac mini's released since late 2020
+* Mac Studios released since 2022
 
 ## How to Open
 * Find DMG file in your downloads folder and open it
