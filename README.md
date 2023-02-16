@@ -20,7 +20,7 @@ In order to run Spaceship, make sure your Mac meets the following requirements:
 The game is supported on the following Macs:
 * MacBook Airs released since late 2020
 * 13" MacBook Pros released since late 2020
-* 14" MacBook Pros released since late 2021
+* 14" MacBook Pros released since 2021
 * 16" MacBook Pros released since 2021
 * 24" iMac released since 2021
 * Mac mini's released since late 2020
