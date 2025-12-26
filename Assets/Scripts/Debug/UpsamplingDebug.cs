@@ -1,3 +1,5 @@
+#if false
+
 using UnityEngine;
 using UnityEngine.UI;
 using GameOptionsUtility;
@@ -90,3 +92,4 @@ public class UpsamplingDebug : MonoBehaviour
         }
     }
 }
+#endif

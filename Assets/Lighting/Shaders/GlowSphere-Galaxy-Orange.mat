@@ -85,6 +85,7 @@ Material:
     - _DstBlend: 1
     - _EnableBlendModePreserveSpecularLighting: 0
     - _EnableFogOnTransparent: 0
+    - _ExcludeFromTUAndAA: 0
     - _OpaqueCullMode: 2
     - _RenderQueueType: 5
     - _SrcBlend: 1
@@ -97,7 +98,7 @@ Material:
     - _StencilWriteMaskDepth: 9
     - _StencilWriteMaskDistortionVec: 4
     - _StencilWriteMaskGBuffer: 15
-    - _StencilWriteMaskMV: 41
+    - _StencilWriteMaskMV: 43
     - _SurfaceType: 1
     - _TransparentBackfaceEnable: 0
     - _TransparentCullMode: 1

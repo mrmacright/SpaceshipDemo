@@ -34,7 +34,7 @@ MonoBehaviour:
     supportTransparentDepthPrepass: 1
     supportTransparentDepthPostpass: 1
     colorBufferFormat: 74
-    supportCustomPass: 1
+    supportCustomPass: 0
     customBufferFormat: 12
     supportedLitShaderMode: 2
     planarReflectionResolution:
@@ -51,6 +51,7 @@ MonoBehaviour:
     decalNormalBufferHP: 0
     msaaSampleCount: 1
     supportMotionVectors: 1
+    supportDataDrivenLensFlare: 1
     supportRuntimeAOVAPI: 0
     supportDitheringCrossFade: 0
     supportTerrainHole: 0
@@ -134,8 +135,8 @@ MonoBehaviour:
       lutFormat: 48
       bufferFormat: 74
     dynamicResolutionSettings:
-      enabled: 1
-      useMipBias: 1
+      enabled: 0
+      useMipBias: 0
       enableDLSS: 1
       DLSSPerfQualitySetting: 1
       DLSSInjectionPoint: 0
@@ -145,12 +146,14 @@ MonoBehaviour:
       fsrSharpness: 0.92
       maxPercentage: 100
       minPercentage: 50
-      dynResType: 0
-      upsampleFilter: 3
+      dynResType: 1
+      upsampleFilter: 1
       forceResolution: 0
       forcedPercentage: 100
       lowResTransparencyMinimumThreshold: 30
       rayTracingHalfResThreshold: 50
+      lowResSSGIMinimumThreshold: 0
+      lowResVolumetricCloudsMinimumThreshold: 50
     lowresTransparentSettings:
       enabled: 1
       checkerboardDepthBuffer: 1
@@ -293,6 +296,8 @@ MonoBehaviour:
   diffusionProfileSettings: {fileID: 0}
   virtualTexturingSettings:
     streamingCpuCacheSizeInMegaBytes: 256
+    streamingMipPreloadTexturesPerFrame: 0
+    streamingPreloadMipCount: 1
     streamingGpuCacheSettings:
     - format: 0
       sizeInMegaBytes: 128

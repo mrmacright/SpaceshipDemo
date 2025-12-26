@@ -3,153 +3,158 @@ using GameplayIngredients;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.HighDefinition;
+using System.Runtime.InteropServices;
 
-public class SpaceshipOptions : GameOption
+namespace GameOptionsUtility
 {
-    public class Preferences
+    public class SpaceshipOptions : GameOption
     {
-        public const string prefix = GameOptions.Preferences.prefix + "Spaceship.";
-        public const string screenPercentage = prefix + "ScreenPercentage";
-        public const string keyboardScheme = prefix + "FPSKeyboardScheme";
-        public const string upsamplingMethod = prefix + "UpsamplingMethod";
-    }
+#if UNITY_IOS && !UNITY_EDITOR
+        [DllImport("__Internal")]
+        private static extern void MetalOverride_SetDrawableScale(float scale);
 
-    public enum FPSKeyboardScheme
-    {
-        WASD = 0,
-        IJKL = 1,
-        ZQSD = 2
-    }
+        [DllImport("__Internal")]
+        private static extern void MetalOverride_ReportUnityScreenSize(int w, int h);
 
-    public enum UpsamplingMethod
-    {
-        CatmullRom = 0,
-        CAS = 1,
-        TAAU = 2,
-        EASU_FSR = 3,
-        DLSS = 4,
-    }
+        [DllImport("__Internal")]
+        private static extern void MetalFX_SetMode(int mode);
+#endif
 
-    public FPSKeyboardScheme fpsKeyboardScheme
-    {
-        get => (FPSKeyboardScheme)PlayerPrefs.GetInt(Preferences.keyboardScheme, (int)FPSKeyboardScheme.WASD);
-        set => PlayerPrefs.SetInt(Preferences.keyboardScheme, (int)value);
-    }
-
-
-    public UpsamplingMethod upsamplingMethod
-    {
-        get => (UpsamplingMethod)PlayerPrefs.GetInt(Preferences.upsamplingMethod, (int)UpsamplingMethod.EASU_FSR);
-        set => PlayerPrefs.SetInt(Preferences.upsamplingMethod, (int)value);
-    }
-
-    public int screenPercentage
-    {
-        get 
-        { 
-            if(m_ScreenPercentage == -1) 
-                m_ScreenPercentage = PlayerPrefs.GetInt(Preferences.screenPercentage, 100);
-
-            return m_ScreenPercentage;
-        }
-        set 
+        public class Preferences
         {
-            m_ScreenPercentage = value;
-            PlayerPrefs.SetInt(Preferences.screenPercentage, m_ScreenPercentage); 
-        }
-    }
-
-    int m_ScreenPercentage = -1;
-    bool init = false;
-    public override void Apply()
-    {
-        if(!init)
-        {
-            DynamicResolutionHandler.SetDynamicResScaler(SetDynamicResolutionScale, DynamicResScalePolicyType.ReturnsPercentage);
-            init = true;
+            public const string prefix = GameOptions.Preferences.prefix + "Spaceship.";
+            public const string screenPercentage = prefix + "ScreenPercentage";
+            public const string keyboardScheme = prefix + "FPSKeyboardScheme";
+            public const string renderResolution = prefix + "RenderResolution";
+            public const string metalFXMode = prefix + "MetalFXMode";
         }
 
-        UpdateUpscalingMethod();
-        UpdateFPSControlScheme();
-    }
+        public enum FPSKeyboardScheme { WASD, IJKL, ZQSD }
+        public enum RenderResolution { Full = 100, Medium = 75, Half = 50 }
+        public enum MetalFXMode { Off = 0, Performance = 1, Balanced = 2, Quality = 3 }
 
-    public FPSKeys fpsKeys { get; private set; }
-    public class FPSKeys
-    {
-        public readonly KeyCode forward;
-        public readonly KeyCode back;
-        public readonly KeyCode left;
-        public readonly KeyCode right;
-        public FPSKeys(KeyCode forward, KeyCode left, KeyCode back, KeyCode right)
+        public FPSKeyboardScheme fpsKeyboardScheme
         {
-            this.forward = forward;
-            this.back = back;
-            this.left = left;
-            this.right = right;
+            get => (FPSKeyboardScheme)PlayerPrefs.GetInt(Preferences.keyboardScheme, 0);
+            set => PlayerPrefs.SetInt(Preferences.keyboardScheme, (int)value);
         }
-    }
 
-    void UpdateFPSControlScheme()
-    {
-        switch (fpsKeyboardScheme)
+        public RenderResolution renderResolution
         {
-            default:
-            case FPSKeyboardScheme.WASD:
-                fpsKeys = new FPSKeys(KeyCode.W, KeyCode.A, KeyCode.S, KeyCode.D);
-                break;
-            case FPSKeyboardScheme.IJKL:
-                fpsKeys = new FPSKeys(KeyCode.I, KeyCode.J, KeyCode.K, KeyCode.L);
-                break;
-            case FPSKeyboardScheme.ZQSD:
-                fpsKeys = new FPSKeys(KeyCode.Z, KeyCode.Q, KeyCode.S, KeyCode.D);
-                break;
+            get => (RenderResolution)PlayerPrefs.GetInt(Preferences.renderResolution, 100);
+            set => PlayerPrefs.SetInt(Preferences.renderResolution, (int)value);
         }
-    }
 
-    void UpdateUpscalingMethod()
-    {
-        var vcm = Manager.Get<VirtualCameraManager>();
-        var camera = vcm.GetComponent<Camera>();
-        var hdCamera = vcm.GetComponent<HDAdditionalCameraData>();
-
-        if(upsamplingMethod >= UpsamplingMethod.DLSS)
+        int m_ScreenPercentage = -1;
+        public int screenPercentage
         {
-            hdCamera.allowDeepLearningSuperSampling = true;
-            hdCamera.deepLearningSuperSamplingUseCustomQualitySettings = true;
-            hdCamera.deepLearningSuperSamplingQuality = 0;
-            hdCamera.deepLearningSuperSamplingUseCustomAttributes = true;
-            hdCamera.deepLearningSuperSamplingUseOptimalSettings = false;
-            hdCamera.deepLearningSuperSamplingSharpening = 0.5f;
-        }
-        else
-        {
-            hdCamera.allowDeepLearningSuperSampling = false;
+            get => m_ScreenPercentage == -1
+                ? (m_ScreenPercentage = PlayerPrefs.GetInt(Preferences.screenPercentage, 100))
+                : m_ScreenPercentage;
 
-            switch (upsamplingMethod)
+            set
             {
-                case UpsamplingMethod.CatmullRom:
-                    DynamicResolutionHandler.SetUpscaleFilter(camera, DynamicResUpscaleFilter.CatmullRom);
-                    break;
-                case UpsamplingMethod.CAS:
-                    DynamicResolutionHandler.SetUpscaleFilter(camera, DynamicResUpscaleFilter.ContrastAdaptiveSharpen);
-                    break;
-                case UpsamplingMethod.TAAU:
-                    DynamicResolutionHandler.SetUpscaleFilter(camera, DynamicResUpscaleFilter.TAAU);
-                    break;
-                case UpsamplingMethod.EASU_FSR:
-                    DynamicResolutionHandler.SetUpscaleFilter(camera, DynamicResUpscaleFilter.EdgeAdaptiveScalingUpres);
-                    break;
-                default:
-                    throw new System.NotImplementedException("Should not happen");
+                m_ScreenPercentage = value;
+                PlayerPrefs.SetInt(Preferences.screenPercentage, value);
+            }
+        }
+
+        public MetalFXMode metalFXMode
+        {
+            get => (MetalFXMode)PlayerPrefs.GetInt(Preferences.metalFXMode, 0);
+            set => PlayerPrefs.SetInt(Preferences.metalFXMode, (int)value);
+        }
+
+        float lastScale = -1f;
+
+        // Locked native resolution (prevents compounding scale)
+        int baseWidth = -1;
+        int baseHeight = -1;
+
+        public override void Apply()
+        {
+            // Capture true native resolution once
+            if (baseWidth < 0 || baseHeight < 0)
+            {
+                baseWidth = Screen.width;
+                baseHeight = Screen.height;
+
+                Debug.Log($"[SpaceshipOptions] Base resolution locked to {baseWidth}x{baseHeight}");
             }
 
-            
+            ApplyRenderScale();
+            UpdateFPSControlScheme();
 
+            // Apply MetalFX immediately if present
+            var fx = Object.FindObjectOfType<MetalFXDropdown>();
+            if (fx != null)
+                fx.PushToOptions();
         }
-    }
 
-    float SetDynamicResolutionScale()
-    {
-        return screenPercentage;
+        public class FPSKeys
+        {
+            public readonly KeyCode forward, left, back, right;
+
+            public FPSKeys(KeyCode f, KeyCode l, KeyCode b, KeyCode r)
+            {
+                forward = f;
+                left = l;
+                back = b;
+                right = r;
+            }
+        }
+
+        public FPSKeys fpsKeys { get; private set; }
+
+        void UpdateFPSControlScheme()
+        {
+            fpsKeys = fpsKeyboardScheme switch
+            {
+                FPSKeyboardScheme.WASD => new FPSKeys(KeyCode.W, KeyCode.A, KeyCode.S, KeyCode.D),
+                FPSKeyboardScheme.IJKL => new FPSKeys(KeyCode.I, KeyCode.J, KeyCode.K, KeyCode.L),
+                FPSKeyboardScheme.ZQSD => new FPSKeys(KeyCode.Z, KeyCode.Q, KeyCode.S, KeyCode.D),
+                _ => fpsKeys
+            };
+        }
+
+        void ReportUnityScreen()
+        {
+#if UNITY_IOS && !UNITY_EDITOR
+            MetalOverride_ReportUnityScreenSize(Screen.width, Screen.height);
+#endif
+        }
+
+        public void ApplyMetalFX()
+        {
+#if UNITY_IOS && !UNITY_EDITOR
+            Debug.Log($"[MetalFX] Applying mode: {metalFXMode}");
+            MetalFX_SetMode((int)metalFXMode);
+#else
+            Debug.Log($"[MetalFX] Editor mode set to: {metalFXMode} (native disabled)");
+#endif
+        }
+
+        public void ApplyRenderScale()
+        {
+            float scale = (int)renderResolution / 100f;
+
+            if (Mathf.Approximately(scale, lastScale))
+                return;
+
+            lastScale = scale;
+
+            // ALWAYS scale from locked native resolution
+            int targetW = Mathf.RoundToInt(baseWidth * scale);
+            int targetH = Mathf.RoundToInt(baseHeight * scale);
+
+#if UNITY_IOS && !UNITY_EDITOR
+            MetalOverride_SetDrawableScale(scale);
+            ReportUnityScreen();
+#else
+            Screen.SetResolution(targetW, targetH, true);
+#endif
+
+            Debug.Log($"[SpaceshipOptions] Render scale = {scale}, buffer = {targetW}x{targetH}");
+        }
     }
 }

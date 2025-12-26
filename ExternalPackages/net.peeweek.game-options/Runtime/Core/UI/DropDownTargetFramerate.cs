@@ -8,7 +8,7 @@ namespace GameOptionsUtility
     [RequireComponent(typeof(Dropdown))]
     public class DropDownTargetFramerate : MonoBehaviour
     {
-        public int[] TargetFramerates = new int[4] { -1, 15, 30, 60 };
+        public int[] TargetFramerates = new int[3] { 30, 60, 120 };
         public string InfiniteText = "Infinite";
         private void OnEnable()
         {

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Profiling;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
@@ -17,11 +18,6 @@ public class FPSManager : Manager
     public Text FPSCounter;
     public Text MillisecondCounter;
 
-    public KeyCode PauseKey = KeyCode.F5;
-    public KeyCode StepKey = KeyCode.F6;
-
-    bool paused = false;
-    bool step = false;
     private void OnDisable()
     {
         if (recording)
@@ -32,7 +28,9 @@ public class FPSManager : Manager
     {
         float dt = GetSmoothDeltaTime();
 
-        if (Input.GetKeyDown(ToggleKey) && FPSRoot != null && !recording)
+        if (Keyboard.current != null &&
+            Keyboard.current.f8Key.wasPressedThisFrame &&
+            FPSRoot != null && !recording)
         {
             FPSRoot.SetActive(!FPSRoot.activeInHierarchy);
         }
@@ -44,32 +42,8 @@ public class FPSManager : Manager
 
             if (MillisecondCounter != null)
                 MillisecondCounter.text = $"{((dt * 1000).ToString("F2"))}ms.";
-
-            if (paused && step)
-            {
-                step = false;
-                Time.timeScale = 0.0f;
-            }
-
-            if (Input.GetKeyDown(PauseKey) && !recording)
-            {
-                if (recording)
-                    EndRecord();
-
-                paused = !paused;
-                Time.timeScale = paused ? 0.0f : 1.0f;
-            }
-            else if (Input.GetKeyDown(StepKey) && !recording)
-            {
-                if (recording)
-                    EndRecord();
-
-                paused = true;
-                step = true;
-                Time.timeScale = 1.0f;
-            }
         }
-
+        
         UpdateViz(dt);
 
         if (recording && !recordingPaused)
@@ -85,7 +59,6 @@ public class FPSManager : Manager
 
     const int MAX_QUEUE = 64;
     Queue<float> queue = new Queue<float>();
-
     float acc;
 
     void ResetSmoothDeltaTime()
@@ -127,6 +100,7 @@ public class FPSManager : Manager
     public Shader drawShader;
     Material m_VisUpdate;
     Material m_VisDraw;
+
     void InitVisualizer()
     {
         m_VisSampler = new CustomRenderTexture(SAMPLES, 1, RenderTextureFormat.RHalf);
@@ -194,6 +168,8 @@ public class FPSManager : Manager
         public float minMs;
         public float maxMs;
         public float avgMs;
+        public float p95Ms;
+        public float p5Ms;
     }
 
     [Header("Recording")]
@@ -205,7 +181,6 @@ public class FPSManager : Manager
     string HTMLPath;
     float recordTTL;
 
-
     public void Record(string filename)
     {
         if (recording)
@@ -214,7 +189,6 @@ public class FPSManager : Manager
         var now = DateTime.Now;
 
         HTMLPath = $"{filename}-{now.Year.ToString("D4")}{now.Month.ToString("D2")}{now.Day.ToString("D2")}-{now.Hour.ToString("D2")}{now.Minute.ToString("D2")}{now.Second.ToString("D2")}.html";
-        Debug.Log($"Started Recording benchmark at path: {HTMLPath}");
         recording = true;
         recordingPaused = false;
         timings = new List<float>();
@@ -224,6 +198,61 @@ public class FPSManager : Manager
 
     public RecordingResults results { get; private set; }
 
+    List<float> FilterOutliers(List<float> samples, float lowThresholdMs, float highThresholdMs)
+    {
+        if (samples == null || samples.Count < 3)
+            return samples;
+
+        List<float> filtered = new List<float>(samples);
+        int n = samples.Count;
+        int i = 0;
+
+        while (i < n)
+        {
+            float v = samples[i];
+            bool isLow = v < lowThresholdMs;
+            bool isHigh = v > highThresholdMs;
+
+            if (!isLow && !isHigh)
+            {
+                i++;
+                continue;
+            }
+
+            int start = i;
+            int end = i;
+
+            while (end + 1 < n)
+            {
+                float nv = samples[end + 1];
+                bool nLow = nv < lowThresholdMs;
+                bool nHigh = nv > highThresholdMs;
+                if (!(nLow || nHigh))
+                    break;
+                end++;
+            }
+
+            int length = end - start + 1;
+
+            if (length < 3)
+            {
+                int leftIndex = start - 1;
+                int rightIndex = end + 1;
+
+                float left = leftIndex >= 0 ? samples[leftIndex] : samples[start];
+                float right = rightIndex < n ? samples[rightIndex] : samples[end];
+                float replacement = (left + right) * 0.5f;
+
+                for (int k = start; k <= end; k++)
+                    filtered[k] = replacement;
+            }
+
+            i = end + 1;
+        }
+
+        return filtered;
+    }
+
     public void EndRecord(bool abort = false)
     {
         recording = false;
@@ -231,6 +260,10 @@ public class FPSManager : Manager
 
         if (abort || timings == null || timings.Count == 0)
             return;
+
+        float lowThreshold = 5.0f;
+        float highThreshold = 50.0f;
+        timings = FilterOutliers(timings, lowThreshold, highThreshold);
 
         var currentCulture = System.Globalization.CultureInfo.CurrentCulture;
         System.Globalization.CultureInfo.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
@@ -240,6 +273,15 @@ public class FPSManager : Manager
         float med = 0f;
         float min = float.PositiveInfinity;
         float max = float.NegativeInfinity;
+
+        List<float> sorted = new List<float>(timings);
+        sorted.Sort();
+
+        int idx95 = Mathf.Clamp(Mathf.FloorToInt(sorted.Count * 0.95f), 0, sorted.Count - 1);
+        int idx5 = Mathf.Clamp(Mathf.FloorToInt(sorted.Count * 0.05f), 0, sorted.Count - 1);
+
+        float p95 = sorted[idx95];
+        float p5 = sorted[idx5];
 
         foreach (var time in timings)
         {
@@ -254,7 +296,9 @@ public class FPSManager : Manager
         {
             minMs = min,
             maxMs = max,
-            avgMs = med
+            avgMs = med,
+            p95Ms = p95,
+            p5Ms = p5
         };
 
         GraphicOption go = GameOption.Get<GraphicOption>();
@@ -262,22 +306,22 @@ public class FPSManager : Manager
         float p = o.screenPercentage / 100f;
         float mPix = (go.width * p * go.height * p) / 1000000;
 
-
         string dateTime = $"{DateTime.Now.ToLongDateString()} {DateTime.Now.ToShortTimeString()}";
         string operatingSystem = $"{SystemInfo.operatingSystem}";
-        string sp = o.screenPercentage == 100 ? $"Native" : $"{o.screenPercentage}% SP ({o.upsamplingMethod.ToString()})";
+        string sp = o.screenPercentage == 100
+        ? "Native"
+        : $"{o.screenPercentage}% SP";
 
         string settings = $"{go.width}x{go.height}@{go.refreshRate}Hz ({go.fullScreenMode}) {sp} ({mPix.ToString("F2")} MegaPixels)- {QualitySettings.names[QualitySettings.GetQualityLevel()]} Quality";
         string bestFPS = $"{(1000 / min).ToString("F1")}fps ({min.ToString("F2")}ms)";
         string worstFPS = $"{(1000 / max).ToString("F1")}fps ({max.ToString("F2")}ms)";
         string averageFPS = $"{(1000 / med).ToString("F1")}fps ({med.ToString("F2")}ms)";
-        string msPerMPix = $"{(med/mPix).ToString("F2")} ms/MPix";
+        string msPerMPix = $"{(med / mPix).ToString("F2")} ms/MPix";
 
         string systemInfo = $"{SystemInfo.deviceModel}";
         string cpuInfo = $" {SystemInfo.processorType} ({SystemInfo.processorCount} threads) @ {(SystemInfo.processorFrequency / 1000f).ToString("F2")} GHz.";
         string gpuInfo = $"{SystemInfo.graphicsDeviceName}({SystemInfo.graphicsDeviceType}) {SystemInfo.graphicsMemorySize / 1000}GB VRAM";
         string memInfo = $"{SystemInfo.systemMemorySize / 1000}GB.";
-
 
 #if UNITY_STANDALONE && !UNITY_EDITOR
         try
@@ -335,13 +379,9 @@ var chart = c3.generate({{
 
             writer.Close();
             System.Globalization.CultureInfo.CurrentCulture = currentCulture;
-
         }
-        #pragma warning disable 0168 
         catch (Exception e)
-
         {
-           
         }
 #endif
     }

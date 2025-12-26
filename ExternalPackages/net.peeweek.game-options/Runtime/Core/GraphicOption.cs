@@ -54,7 +54,7 @@ namespace GameOptionsUtility
         }
         public int quality
         {
-            get { return PlayerPrefs.GetInt(Preferences.quality, QualitySettings.GetQualityLevel()); }
+            get { return PlayerPrefs.GetInt(Preferences.quality, 0); }
             set { PlayerPrefs.SetInt(Preferences.quality, value); }
         }
 
@@ -62,9 +62,9 @@ namespace GameOptionsUtility
         [SerializeField]
         protected FullScreenMode m_DefaultFullScreenMode = FullScreenMode.FullScreenWindow;
         [SerializeField]
-        protected bool m_DefaultVSync = true;
+        protected bool m_DefaultVSync = false;
         [SerializeField]
-        protected int m_DefaultTargetFrameRate = -1;
+        protected int m_DefaultTargetFrameRate = 60;
         [SerializeField]
         protected bool m_DefaultNativeResolution = true;
         [SerializeField]

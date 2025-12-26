@@ -120,5 +120,10 @@ namespace GameplayIngredients.Controllers
         {
             MoveSpeed = value;
         }
-    }
-}
+
+        public void Interact()
+        {
+            Debug.Log("Interact triggered");
+        }
+        }
+        }

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_DefaultFullScreenMode: 1
   m_DefaultVSync: 0
-  m_DefaultTargetFrameRate: -1
+  m_DefaultTargetFrameRate: 60
   m_DefaultNativeResolution: 1
   m_DefaultWidth: 1280
   m_DefaultHeight: 720

@@ -11,29 +11,27 @@ namespace GameOptionsUtility
             public const string prefix = "GameOptions.";
         }
 
-        [RuntimeInitializeOnLoadMethod]
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSplashScreen)]
         static void Initialize()
         {
+            Load();
+
+            GameOptions.Apply();
+
             var gameObject = new GameObject("Game Options");
             gameObject.AddComponent<GameOptions>();
-            DontDestroyOnLoad(gameObject);
-            Load();
-        }
-
-        private void Start()
-        {
-            Apply();
+            UnityEngine.Object.DontDestroyOnLoad(gameObject);
         }
 
         static void Load()
         {
-            foreach(var assembly in AppDomain.CurrentDomain.GetAssemblies())
+            foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
             {
                 try
                 {
-                    foreach(var type in assembly.GetTypes())
+                    foreach (var type in assembly.GetTypes())
                     {
-                        if(type.IsSubclassOf(typeof(GameOption)) && !type.IsAbstract)
+                        if (type.IsSubclassOf(typeof(GameOption)) && !type.IsAbstract)
                         {
                             GameOption.Add(type);
                         }
@@ -50,7 +48,7 @@ namespace GameOptionsUtility
 
         public static void Apply()
         {
-            foreach(var gameOption in GameOption.all)
+            foreach (var gameOption in GameOption.all)
             {
                 gameOption.Apply();
             }
@@ -59,4 +57,3 @@ namespace GameOptionsUtility
         }
     }
 }
-
