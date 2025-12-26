@@ -1,23 +1,15 @@
-# Spaceship Demo
+Spaceship Demo is a AAA Playable First person demo showcasing effects made with Unity's Visual Effect Graph and rendered with High Definition Render Pipeline. It highlights advanced lighting, particle effects, and detailed environments optimized for modern iPhone and iPad devices.
 
-![](https://blogs.unity3d.com/wp-content/uploads/2019/08/image10.png)
+Supported iPhones:
+• iPhone 15 Pro / 15 Pro Max & later
+• iPhone 16 & later
+• iPhone Air
 
-Spaceship, is a modern AAA tech demo, optimised for modern Macs by Unity & the Apple Metal Engineering Team. It's short 3-5 minute narrative sequence showcases high-end visual effects using Unity High Definition Render Pipeline & VFX Graph. It's primarily intended as a learning resource for game devs, but also tech enthusiasts! 
+Supported iPads:
+• iPad mini (A17 Pro)
+• iPad Air (M1) & later
+• iPad Pro (M1) & later
 
-**[DOWNLOAD LATEST MACOS RELEASE HERE](https://github.com/mrmacright/SpaceshipDemo/releases/tag/MrMacRightBuilds)**
-
-## Requires Mac with M1 chip or later
-
-• MacBook Pro (M1) or later
-
-• MacBook Air (M1) or later
-
-• Mac mini (M1) or later
-
-• Mac (M1) or later
-
-• Mac Studio (M1 Max) or later
-
-• Mac Pro (2023)
-
-Note: Controller support is not fully available, and there are issues with mouse input in PLAY mode. So just use the benchmark mode. 
+- MetalFX is currently disabled.
+- First launch will take a long time due to shader compilation.
+- Controller support is incomplete for menus and pausing.
