@@ -2,7 +2,7 @@
 
 ![Preview_GitHub](https://github.com/user-attachments/assets/8e1d47f0-5a3f-4884-a61b-d2b4111ce0c6)
 
-Spaceship Demo is a AAA Playable First person demo showcasing effects made with Unity's Visual Effect Graph and rendered with High Definition Render Pipeline. It highlights advanced lighting, particle effects, and detailed environments optimized for modern iPhone and iPad devices.
+Spaceship Demo is a AAA Playable First person PS4-grade AAA demo showcasing effects made with Unity's Visual Effect Graph and rendered with High Definition Render Pipeline. It highlights advanced lighting, particle effects, and detailed environments optimized for modern iPhone and iPad devices.
 
 [DOWNLOAD TESTFLIGHT BUILD](https://testflight.apple.com/join/xAPVwnau)
 
@@ -66,3 +66,5 @@ You can clone this repository and start opening directly the project using the f
 
 #### Download HDRP Mobile in Package Manager
 This project is a [Unity package](https://github.com/alelievr/HDRP-Mobile) that allows HDRP to build on unsupported targets like Android, IOS, and Switch.
+
+# ChatGPT has been used for some scripts and pluggins
