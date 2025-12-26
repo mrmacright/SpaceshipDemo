@@ -67,4 +67,4 @@ You can clone this repository and start opening directly the project using the f
 #### Download HDRP Mobile in Package Manager
 This project is a [Unity package](https://github.com/alelievr/HDRP-Mobile) that allows HDRP to build on unsupported targets like Android, IOS, and Switch.
 
-# ChatGPT has been used for some scripts and pluggins
+# ChatGPT has been used for some scripts and plugins
