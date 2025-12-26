@@ -34,11 +34,6 @@ Spaceship Demo is a AAA Playable First person demo showcasing effects made with 
 
 ## Special thanks
 
-[
-HDRP Mobile Package](https://github.com/alelievr/HDRP-Mobile)
-
-This project is a Unity package that allows HDRP to build on unsupported targets like Android, IOS, and Switch.
-
 <a href="https://www.elverils.com">
   <img src="https://github.com/user-attachments/assets/03bb3fe6-1b72-4cfb-99ef-c25b0bf147c9" alt="Elverils logo" width="450" />
 </a>
@@ -69,3 +64,5 @@ If you have [Github Desktop](https://desktop.github.com/) installed :  use the *
 
 You can clone this repository and start opening directly the project using the following command : `git clone https://github.com/Unity-Technologies/SpaceshipDemo.git`
 
+#### Download HDRP Mobile in Package Manager
+This project is a [Unity package](https://github.com/alelievr/HDRP-Mobile) that allows HDRP to build on unsupported targets like Android, IOS, and Switch.
