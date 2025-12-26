@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## 2025 - 02 - Mac Build Update (LTS 2022.3)
+
+**Version Tag : 2022.3.62f3**
+
+* Updated Unity to 2022.3.62f3 LTS
+* Updated HDRP/VFX to match Unity 2022.3 LTS packages
+
+This repository represents the macOS version only
+
+No new visual features or gameplay changes were introduced in this update
+
 ## 2023 - 03 - 03 - 2022.2
 
 **Version Tag** : `2021.2.6f1`
