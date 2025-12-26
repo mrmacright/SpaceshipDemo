@@ -1,3 +1,7 @@
+.DS_Store
+ExternalPackages/.DS_Store
+iOS_SHIPPING/
+
 [Bb]uild/
 [Bb]uilds/
 GFX/
