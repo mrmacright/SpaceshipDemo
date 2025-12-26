@@ -6,8 +6,6 @@ Spaceship, is a modern AAA tech demo, optimised for modern Macs by Unity & the A
 
 **[DOWNLOAD LATEST MACOS RELEASE HERE](https://github.com/mrmacright/SpaceshipDemo/releases/tag/MrMacRightBuilds)**
 
-The game is also available on [Steam](https://store.steampowered.com/app/1605230/Spaceship__Visual_Effect_Graph_Demo/)... but that build is very broken on Mac from the UI and gameplay interaction. Avoid it until it's fixed! 
-
 ## Requires Mac with M1 chip or later
 
 • MacBook Pro (M1) or later
