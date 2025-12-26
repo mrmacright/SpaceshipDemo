@@ -55,7 +55,9 @@ In order to download and run the latest Spaceship demo project, make sure you ha
 * [Github Desktop](https://desktop.github.com/) or [Git For Windows](https://git-scm.com/download/win) + [Git LFS](https://git-lfs.github.com/) (Required for Cloning the Repository) or any other git client.
 * Unity 2022.3.62f3 or newer.
 
-## How to Download/Install
+## How to Download/Install for iOS
+
+[Mac info here](https://github.com/mrmacright/SpaceshipDemo/tree/Mac)
 
 **Important Note**: This repository uses **Git-LFS** to store large files. In order to get the data correctly you need to [install Git-LFS](https://git-lfs.github.com/) before starting to clone the repository. **Do NOT use the Download ZIP button as it will not get the LFS files correctly**
 
