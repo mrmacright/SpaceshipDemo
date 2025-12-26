@@ -2,7 +2,7 @@
 
 Spaceship, is a modern AAA tech demo, optimised for modern Macs by Unity & the Apple Metal Engineering Team. It's short 3-5 minute narrative sequence showcases high-end visual effects using Unity High Definition Render Pipeline & VFX Graph. It's primarily intended as a learning resource for game devs, but also tech enthusiasts! 
 
-**[DOWNLOAD LATEST MACOS RELEASE HERE](https://github.com/mrmacright/SpaceshipDemo/releases/tag/MrMacRightBuilds)**
+**[DOWNLOAD LATEST MACOS RELEASE HERE](https://github.com/mrmacright/SpaceshipDemo/releases)**
 
 ## Requires Mac with M1 chip or later
 
