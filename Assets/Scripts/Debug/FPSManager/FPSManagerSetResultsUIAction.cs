@@ -106,9 +106,7 @@ public class FPSManagerSetResultsUIAction : ActionBase
         // Hardware info
         CPUInfo.text =
             $"{SystemInfo.processorType} ({SystemInfo.processorCount} threads) @ {(SystemInfo.processorFrequency / 1000f).ToString("F2")} GHz.";
-        RAMInfo.text =
-            $"System Memory : {SystemInfo.systemMemorySize / 1000}GB";
-        GPUInfo.text =
-            $"{SystemInfo.graphicsDeviceName} ({SystemInfo.graphicsDeviceType}) {SystemInfo.graphicsMemorySize / 1000}GB VRAM";
+        RAMInfo.text = $"Usable System Memory : {SystemInfo.systemMemorySize / 1000} GB";
+        GPUInfo.text = SystemInfo.graphicsDeviceName;
     }
 }

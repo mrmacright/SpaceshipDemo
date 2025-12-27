@@ -1151,8 +1151,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7959908490878344197, guid: 1612e381fec43409d8ac24eab0bc26de,
         type: 3}
-      propertyPath: m_FontData.m_Alignment
-      value: 3
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7959908490878344197, guid: 1612e381fec43409d8ac24eab0bc26de,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    - target: {fileID: 7959908490878344197, guid: 1612e381fec43409d8ac24eab0bc26de,
+        type: 3}
+      propertyPath: m_FontData.m_FontStyle
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8213092635463094770, guid: 1612e381fec43409d8ac24eab0bc26de,
         type: 3}
@@ -8246,6 +8256,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5017496727982523517, guid: e06b0f54abf38414daae3c32ce5e3ba6,
         type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 60.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 5017496727982523517, guid: e06b0f54abf38414daae3c32ce5e3ba6,
+        type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -8266,6 +8281,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5969087520910920489, guid: e06b0f54abf38414daae3c32ce5e3ba6,
         type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.99999994
+      objectReference: {fileID: 0}
+    - target: {fileID: 5969087520910920489, guid: e06b0f54abf38414daae3c32ce5e3ba6,
+        type: 3}
       propertyPath: m_SizeDelta.y
       value: 61.17
       objectReference: {fileID: 0}
@@ -8277,13 +8297,18 @@ PrefabInstance:
     - target: {fileID: 5969087520910920489, guid: e06b0f54abf38414daae3c32ce5e3ba6,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 156.62
+      value: 156.61998
       objectReference: {fileID: 0}
     - target: {fileID: 6787760331351875846, guid: e06b0f54abf38414daae3c32ce5e3ba6,
         type: 3}
       propertyPath: m_Name
       value: 'Resolution '
       objectReference: {fileID: 0}
+    - target: {fileID: 6805928629563112263, guid: e06b0f54abf38414daae3c32ce5e3ba6,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     - target: {fileID: 7882641713892602505, guid: e06b0f54abf38414daae3c32ce5e3ba6,
         type: 3}
       propertyPath: m_Pivot.x
@@ -8409,6 +8434,16 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: GameOptionsUtility.FPS_Cycler, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 7987000678475226560, guid: e06b0f54abf38414daae3c32ce5e3ba6,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 62.585
+      objectReference: {fileID: 0}
+    - target: {fileID: 7987000678475226560, guid: e06b0f54abf38414daae3c32ce5e3ba6,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.70745087
+      objectReference: {fileID: 0}
     - target: {fileID: 7987000678475226561, guid: e06b0f54abf38414daae3c32ce5e3ba6,
         type: 3}
       propertyPath: m_IsActive
@@ -8453,6 +8488,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: GameOptionsUtility.FPS_Cycler, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8764085164534420116, guid: e06b0f54abf38414daae3c32ce5e3ba6,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 60.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 8764085164534420116, guid: e06b0f54abf38414daae3c32ce5e3ba6,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.00002861023
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
