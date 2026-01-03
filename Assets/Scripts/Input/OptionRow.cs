@@ -1,64 +1,61 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
+using GameOptionsUtility;
 
 public class OptionRow : MonoBehaviour, ISubmitHandler, IMoveHandler
 {
     public TextMeshProUGUI valueText;
-    public string[] values;
 
-    int index = 0;
-
-    void Start()
-    {
-        if (values.Length > 0)
-            valueText.text = values[index];
-    }
+    // Assign ONE of these per row in the Inspector
+    public DropDownRenderResolution resolutionCycler;
+    public DropDownQuality_Cycler qualityCycler;
+    public HDRPAntiAliasing_Cycler aaCycler;
+    public FPS_Cycler fpsCycler;
+    public MetalFXDropdown metalFXCycler;
 
     // X / A button
     public void OnSubmit(BaseEventData eventData)
     {
-        Next();
+        Debug.Log($"[OptionRow] OnSubmit fired on {gameObject.name}");
+        ApplyNext();
     }
 
     // D-pad / stick left-right
     public void OnMove(AxisEventData eventData)
     {
+        Debug.Log($"[OptionRow] OnMove {eventData.moveDir} on {gameObject.name}");
+
         if (eventData.moveDir == MoveDirection.Right)
         {
-            Next();
+            ApplyNext();
             eventData.Use();
         }
         else if (eventData.moveDir == MoveDirection.Left)
         {
-            Prev();
+            ApplyPrev();
             eventData.Use();
         }
-        else
-        {
-            // allow up/down to continue navigation
-            ExecuteEvents.Execute(gameObject, eventData, ExecuteEvents.moveHandler);
-        }
+        // IMPORTANT:
+        // Do nothing for Up / Down.
+        // Unity handles vertical navigation automatically.
     }
 
-    void Next()
+    void ApplyNext()
     {
-        index = (index + 1) % values.Length;
-        valueText.text = values[index];
-        Apply();
+        if (resolutionCycler) resolutionCycler.Next();
+        else if (qualityCycler) qualityCycler.Next();
+        else if (aaCycler) aaCycler.Next();
+        else if (fpsCycler) fpsCycler.Next();
+        else if (metalFXCycler) metalFXCycler.OnRight();
     }
 
-    void Prev()
+    void ApplyPrev()
     {
-        index = (index - 1 + values.Length) % values.Length;
-        valueText.text = values[index];
-        Apply();
-    }
-
-    void Apply()
-    {
-        // hook into SpaceshipOptions here
-        // example:
-        // SpaceshipOptions.SetResolution(values[index]);
+        if (resolutionCycler) resolutionCycler.Prev();
+        else if (qualityCycler) qualityCycler.Prev();
+        else if (aaCycler) aaCycler.Prev();
+        else if (fpsCycler) fpsCycler.Prev();
+        else if (metalFXCycler) metalFXCycler.OnLeft();
     }
 }
